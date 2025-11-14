@@ -1,0 +1,68 @@
+pip --version # instalar librerias
+pip list 
+pip install django #instalacion global
+#conda en django
+
+#crear entorno virtual
+1.- python -m venv capsulas
+#activar entorno (bash)
+2.- source capsulas/Scripts/activate
+# instalar django
+pip install django
+# opcional: actualizar pip
+python.exe -m pip install --upgrade pip
+
+#respaldar los package de mi entorno
+pip freeze > requerimientos.txt 
+#instalar dependecias
+pip install -r requerimientos.txt 
+
+## crear proyecto django
+django-admin startproject portafolios
+cd portafolios
+
+#ejecutar proyecto
+python manage.py runserver
+
+## crear aplicacion dentro del proyecto
+python manage.py startapp proyectos
+
+instalar postgresql
+clave admin1234
+
+quitar check de stack builder
+
+#agregar aplicacion
+INSTALLED_APPS = [
+    ...
+    'proyectos',
+]
+
+#configurar base datos
+
+#agregar modulo
+pip install psycopg2
+
+#crear/actualiza tablas en base datos (ORM)
+python manage.py migrate
+
+#crear super usuario paraa admin
+python manage.py createsuperuser
+
+#crer modelo
+
+#crear un arhivo que creara una tabla
+python manage.py makemigrations
+python manage.py migrate
+
+#registrar el modelo en admin.py de la app
+
+## Tarea: mostrar todas las columnas en admin
+
+#####################
+crear ruta
+crear metodo
+crear html
+
+
+
