@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     #path('proyectos/', views.index_proyecto, name='index_proyecto'),
     path('proyectos/', include('proyectos.urls')),#http://127.0.0.1:8000/proyectos
+    path('api/', include('proyectos.urls_api')),
 ]

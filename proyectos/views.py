@@ -16,8 +16,13 @@ def crear_proyecto(request):
         return render(request,'crear_proyecto.html')
     
     if request.method == 'POST':
-        pass
-    
+        nombre = request.POST['nombre']
+        descripcion= request.POST.get('descripcion')
+        url = request.POST.get('url')
+        
+        proyecto = Proyecto(nombre =nombre, descripcion=descripcion, url=url)
+        proyecto.save()# insert into productos (nombre, descripcion,url) values (...,...,..)
+        return redirect('index_proyecto')
 
 def editar_proyecto(request, id):
     proyecto = get_object_or_404(Proyecto, pk=id)
@@ -28,3 +33,13 @@ def eliminar_proyecto(request, pk):
     proyecto.delete()
     
     return redirect('index_proyecto')
+
+
+
+
+from rest_framework import viewsets
+from .serializers import ProyectoSerializer
+
+class ProyectoViewSet(viewsets.ModelViewSet):
+    queryset = Proyecto.objects.all()
+    serializer_class = ProyectoSerializer
