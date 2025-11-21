@@ -8,6 +8,7 @@
             <li>{{proyecto.nombre}}</li>
             <li>{{proyecto.descripcion}}</li>
             <li>{{proyecto.url}}</li>
+            <li><a href="{% url 'editar_proyecto' proyecto.id %}">Editar</a></li>
             <li><a href="{% url 'eliminar_proyecto' proyecto.id %}">Eliminar</a></li>
             <li><a href="/proyectos/eliminar/{{proyecto.id}}">Eliminar</a></li>
             <hr>

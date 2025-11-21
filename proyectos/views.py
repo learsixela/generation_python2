@@ -20,13 +20,24 @@ def crear_proyecto(request):
         descripcion= request.POST.get('descripcion')
         url = request.POST.get('url')
         
+        #instancia de la clase Proyecto
         proyecto = Proyecto(nombre =nombre, descripcion=descripcion, url=url)
         proyecto.save()# insert into productos (nombre, descripcion,url) values (...,...,..)
         return redirect('index_proyecto')
 
 def editar_proyecto(request, id):
     proyecto = get_object_or_404(Proyecto, pk=id)
-    return render(request,'editar_proyecto.html')
+    if request.method == 'POST':
+        proyecto.nombre = request.POST['nombre']
+        proyecto.descripcion = request.POST['descripcion']
+        proyecto.url = request.POST['url']
+        proyecto.save()
+        return redirect('index_proyecto')
+    else:
+        context = {
+            'proyecto': proyecto
+        }
+        return render(request,'editar_proyecto.html',context)
 
 def eliminar_proyecto(request, pk):
     proyecto = get_object_or_404(Proyecto, pk=pk)
